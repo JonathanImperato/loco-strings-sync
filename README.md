@@ -11,7 +11,8 @@ A custom Gradle Plugin useful to sync loco string resources to local projects.
   }
   ```
 - Add:
-  ```LocoSync {
+  ```
+  LocoSync {
         configs.set(arrayOf(
             LocoConfig().also {
                 it.apiKey = "API_KEY1"
@@ -25,6 +26,7 @@ A custom Gradle Plugin useful to sync loco string resources to local projects.
             }
         ))
         resDir.set("$projectDir/src/main/res")
-      }```
+  }
+```
   
 - Finally, after syncing, you will have the task `LocoStringsSync` that will automatically sync all you chosen strings.
