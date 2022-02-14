@@ -8,10 +8,7 @@ const val TASK_NAME = "LocoStringsSync"
 
 abstract class LocoSyncPlugin : Plugin<Project> {
     override fun apply(project: Project) {
-        // Add the 'template' extension object
         val extension = project.extensions.create(EXTENSION_NAME, Extension::class.java)
-
-        // Add a task that uses configuration from the extension object
         project.tasks.register(TASK_NAME, GenerateResourcesTask::class.java) {
             it.resDir.set(extension.resDir)
             it.configs.set(extension.configs)

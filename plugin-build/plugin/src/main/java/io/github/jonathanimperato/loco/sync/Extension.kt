@@ -4,6 +4,7 @@ import io.github.jonathanimperato.loco.sync.models.LocoConfig
 import org.gradle.api.provider.Property
 import javax.inject.Inject
 
+@Suppress("UnnecessaryAbstractClass")
 abstract class Extension @Inject constructor() {
     abstract var resDir: Property<String>
     abstract var configs: Property<Array<LocoConfig>>

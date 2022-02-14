@@ -5,11 +5,9 @@ import org.gradle.api.DefaultTask
 import org.gradle.api.provider.Property
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
-import org.gradle.api.tasks.options.Option
 import java.io.File
 import java.net.HttpURLConnection
 import java.net.URL
-
 
 abstract class GenerateResourcesTask : DefaultTask() {
 
@@ -19,14 +17,13 @@ abstract class GenerateResourcesTask : DefaultTask() {
     }
 
     @get:Input
-    @get:Option(option = "resDir", description = "Project string resources directory")
     abstract val resDir: Property<String>
 
     @get:Input
-    @get:Option(option = "configs", description = "Loco string resource configurations")
     abstract val configs: Property<Array<LocoConfig>>
 
     @TaskAction
+    @Suppress("NestedBlockDepth")
     fun generate() {
         val resDir = resDir.get()
         configs.get().forEach { config ->
@@ -40,16 +37,17 @@ abstract class GenerateResourcesTask : DefaultTask() {
                     addRequestProperty("Accept-Charset", "utf-8")
                     doOutput = true
                     requestMethod = "GET"
-                    val text = (content as String)
-                    var appendix = ""
-                    if (lang != defLang) {
-                        if (lang.contains("-")) lang = lang.replace("-", "-r")
-                        appendix = "-$lang"
+                    val appendix = when {
+                        lang != defLang -> {
+                            if (lang.contains("-")) lang = lang.replace("-", "-r")
+                            "-$lang"
+                        }
+                        else -> ""
                     }
-                    val directory = File("${resDir}/values$appendix/")
+                    val directory = File("$resDir/values$appendix/")
                     if (!directory.exists()) directory.mkdir()
                     val file = File(directory.absolutePath + "/" + config.fileName + ".xml")
-                    file.writeText(text, Charsets.UTF_8)
+                    file.writeText((content as String), Charsets.UTF_8)
                 }
             }
         }
