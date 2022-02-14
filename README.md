@@ -27,6 +27,4 @@ A custom Gradle Plugin useful to sync loco string resources to local projects.
         ))
         resDir.set("$projectDir/src/main/res")
   }
-```
-  
 - Finally, after syncing, you will have the task `LocoStringsSync` that will automatically sync all you chosen strings.
