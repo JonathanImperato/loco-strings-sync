@@ -7,7 +7,7 @@ A custom Gradle Plugin useful to sync loco string resources to local projects.
 - Import the plugin in your module-level build.gradle
   ```kotlin
   plugins {
-    id("io.github.jonathanimperato.loco.sync")
+    id("loco-sync-plugin")
   }
   ```
 - Add:
