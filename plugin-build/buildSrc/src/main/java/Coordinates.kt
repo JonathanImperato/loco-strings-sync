@@ -1,7 +1,7 @@
 object PluginCoordinates {
     const val ID = "jonathanimperato.loco.sync"
     const val GROUP = "jonathanimperato.loco"
-    const val VERSION = "0.0.8"
+    const val VERSION = "0.0.9"
     const val IMPLEMENTATION_CLASS = "io.github.jonathanimperato.loco.sync.LocoSyncPlugin"
 }
 
