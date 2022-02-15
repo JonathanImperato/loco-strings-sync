@@ -11,8 +11,6 @@ object PluginBundle {
     const val DESCRIPTION = "A custom Gradle Plugin useful to sync loco string resources to local projects."
     const val DISPLAY_NAME = "Loco Sync Plugin"
     val TAGS = listOf(
-        "plugin",
-        "gradle",
         "android",
         "loco",
         "localise",
