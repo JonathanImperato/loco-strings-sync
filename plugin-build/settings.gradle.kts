@@ -5,6 +5,6 @@ pluginManagement {
     }
 }
 
-rootProject.name = ("loco-strings-sync")
+rootProject.name = ("io.github.jonathanimperato")
 
 include(":plugin")

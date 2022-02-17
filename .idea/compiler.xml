@@ -3,7 +3,7 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="11">
       <module name="com.ncorti.kotlin.gradle.template.plugin" target="1.8" />
-      <module name="loco-strings-sync.plugin" target="1.8" />
+      <module name="io.github.jonathanimperato.sync.plugin" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

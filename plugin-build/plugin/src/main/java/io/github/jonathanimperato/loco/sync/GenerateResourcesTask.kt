@@ -13,7 +13,6 @@ abstract class GenerateResourcesTask : DefaultTask() {
 
     init {
         description = "Generate loco strings file task"
-        group = "io.github.jonathanimperato.loco"
     }
 
     @get:Input
