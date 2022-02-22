@@ -2,9 +2,11 @@ package io.github.jonathanimperato.loco.sync
 
 import io.github.jonathanimperato.loco.sync.models.LocoConfig
 import org.gradle.api.DefaultTask
+import org.gradle.api.plugins.BasePlugin
 import org.gradle.api.provider.Property
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
+import org.gradle.internal.impldep.org.glassfish.jaxb.runtime.v2.runtime.Coordinator
 import java.io.File
 import java.net.HttpURLConnection
 import java.net.URL
@@ -13,6 +15,7 @@ abstract class GenerateResourcesTask : DefaultTask() {
 
     init {
         description = "Generate loco strings file task"
+        group = BasePlugin.BUILD_GROUP
     }
 
     @get:Input
