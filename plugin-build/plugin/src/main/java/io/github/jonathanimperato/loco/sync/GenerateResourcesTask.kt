@@ -6,7 +6,6 @@ import org.gradle.api.plugins.BasePlugin
 import org.gradle.api.provider.Property
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
-import org.gradle.internal.impldep.org.glassfish.jaxb.runtime.v2.runtime.Coordinator
 import java.io.File
 import java.net.HttpURLConnection
 import java.net.URL
@@ -49,7 +48,8 @@ abstract class GenerateResourcesTask : DefaultTask() {
                     val directory = File("$resDir/values$appendix/")
                     if (!directory.exists()) directory.mkdir()
                     val file = File(directory.absolutePath + "/" + config.fileName + ".xml")
-                    file.writeText((content as String), Charsets.UTF_8)
+                    val textContent = inputStream.bufferedReader().readText()
+                    file.writeText(textContent, Charsets.UTF_8)
                 }
             }
         }
