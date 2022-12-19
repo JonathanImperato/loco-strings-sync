@@ -18,16 +18,13 @@ abstract class GenerateResourcesTask : DefaultTask() {
     }
 
     @get:Input
-    abstract val resDir: Property<String>
-
-    @get:Input
     abstract val configs: Property<Array<LocoConfig>>
 
     @TaskAction
     @Suppress("NestedBlockDepth")
     fun generate() {
-        val resDir = resDir.get()
         configs.get().forEach { config ->
+            val resDir = config.resDir
             val defLang = config.defaultLanguage
             config.languages.forEach {
                 var lang = it
