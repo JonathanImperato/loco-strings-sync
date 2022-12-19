@@ -7,6 +7,7 @@ import javax.inject.Inject
 
 @Suppress("UnnecessaryAbstractClass")
 abstract class Extension @Inject constructor(project: Project) {
+    var taskName: Property<String> = project.objects.property(String::class.java)
     var resDir: Property<String> = project.objects.property(String::class.java)
     var configs: Property<Array<LocoConfig>> = project.objects.property(Array<LocoConfig>::class.java)
 }
