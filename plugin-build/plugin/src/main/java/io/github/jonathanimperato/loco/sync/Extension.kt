@@ -1,5 +1,6 @@
 package io.github.jonathanimperato.loco.sync
 
+import io.github.jonathanimperato.loco.sync.models.Task
 import org.gradle.api.Project
 import org.gradle.api.provider.Property
 import javax.inject.Inject

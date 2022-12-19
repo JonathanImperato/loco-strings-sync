@@ -1,8 +1,8 @@
-package io.github.jonathanimperato.loco.sync
+package io.github.jonathanimperato.loco.sync.models
 
 import io.github.jonathanimperato.loco.sync.models.LocoConfig
 
-abstract class Task {
+open class Task {
     var taskName: String = "LocoSync"
     var resDir: String = ""
     var configs: Array<LocoConfig> = emptyArray()
