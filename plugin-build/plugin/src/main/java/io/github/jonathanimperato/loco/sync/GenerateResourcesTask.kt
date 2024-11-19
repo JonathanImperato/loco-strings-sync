@@ -45,10 +45,24 @@ abstract class GenerateResourcesTask : DefaultTask() {
                     val directory = File("$resDir/values$appendix/")
                     if (!directory.exists()) directory.mkdir()
                     val file = File(directory.absolutePath + "/" + config.fileName + ".xml")
-                    val textContent = inputStream.bufferedReader().readText()
+                    val textContent = inputStream.bufferedReader().readText().unescapeXml()
                     file.writeText(textContent, Charsets.UTF_8)
                 }
             }
         }
+    }
+    /**
+     * Estensione per rimuovere gli escape XML.
+     */
+    fun String.unescapeXml(): String {
+        return this.replace("\\\\", "\\") // Rimuove i doppi backslash
+            .replace("\\'", "'")         // Rimuove l'escape dal carattere singolo
+            .replace("\\n", "\n")        // Sostituisce le sequenze di newline con newline reali
+            .replace("\\t", "\t")        // Sostituisce le tabulazioni
+            .replace("&lt;", "<")        // Decodifica i caratteri HTML
+            .replace("&gt;", ">")
+            .replace("&amp;", "&")
+            .replace("&quot;", "\"")
+            .replace("&#39;", "'")
     }
 }
