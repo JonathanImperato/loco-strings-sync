@@ -6,5 +6,5 @@ open class LocoConfig {
     var languages: Array<String> = arrayOf("en")
     var defaultLanguage: String = "en"
     var resDir : String = ""
-    var isAndroid : Boolean = true
+    var unescape : Boolean = false
 }

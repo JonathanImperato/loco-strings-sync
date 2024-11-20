@@ -25,6 +25,7 @@ abstract class GenerateResourcesTask : DefaultTask() {
     fun generate() {
         configs.get().forEach { config ->
             val resDir = config.resDir
+            val unescape = config.unescape
             val defLang = config.defaultLanguage
             config.languages.forEach {
                 var lang = it
@@ -45,10 +46,8 @@ abstract class GenerateResourcesTask : DefaultTask() {
                     val directory = File("$resDir/values$appendix/")
                     if (!directory.exists()) directory.mkdir()
                     val file = File(directory.absolutePath + "/" + config.fileName + ".xml")
-                    val textContent = inputStream.bufferedReader().readText().apply {
-                        if (!config.isAndroid) unescapeXml()
-                    }
-                    file.writeText(textContent, Charsets.UTF_8)
+                    val textContent = inputStream.bufferedReader().readText()
+                    file.writeText(if (unescape) textContent.unescapeXml() else textContent, Charsets.UTF_8)
                 }
             }
         }
