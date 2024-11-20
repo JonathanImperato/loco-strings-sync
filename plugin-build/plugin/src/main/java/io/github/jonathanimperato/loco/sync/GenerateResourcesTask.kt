@@ -58,12 +58,5 @@ abstract class GenerateResourcesTask : DefaultTask() {
     fun String.unescapeXml(): String {
         return this.replace("\\\\", "\\") // Rimuove i doppi backslash
             .replace("\\'", "'")         // Rimuove l'escape dal carattere singolo
-            .replace("\\n", "\n")        // Sostituisce le sequenze di newline con newline reali
-            .replace("\\t", "\t")        // Sostituisce le tabulazioni
-            .replace("&lt;", "<")        // Decodifica i caratteri HTML
-            .replace("&gt;", ">")
-            .replace("&amp;", "&")
-            .replace("&quot;", "\"")
-            .replace("&#39;", "'")
     }
 }
