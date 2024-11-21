@@ -47,7 +47,7 @@ abstract class GenerateResourcesTask : DefaultTask() {
                     if (!directory.exists()) directory.mkdir()
                     val file = File(directory.absolutePath + "/" + config.fileName + ".xml")
                     val textContent = inputStream.bufferedReader().readText()
-                    file.writeText(if (unescape) textContent.unescapeXml() else textContent, Charsets.UTF_8)
+                    file.writeText(if (unescape) textContent.unescapeXml().addIndexToArgs() else textContent, Charsets.UTF_8)
                 }
             }
         }
@@ -58,5 +58,10 @@ abstract class GenerateResourcesTask : DefaultTask() {
     fun String.unescapeXml(): String {
         return this.replace("\\\\", "\\") // Rimuove i doppi backslash
             .replace("\\'", "'")         // Rimuove l'escape dal carattere singolo
+    }
+    
+    fun String.addIndexToArgs(): String {
+        return this.replace("%s", "%1\$s") 
+            .replace("%d", "%1\$d")        
     }
 }
