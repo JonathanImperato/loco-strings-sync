@@ -61,7 +61,7 @@ abstract class GenerateResourcesTask : DefaultTask() {
     }
     
     fun String.addIndexToArgs(): String {
-        return this.replace("%s", "%1$s") 
-            .replace("%d", "%1$d")        
+        return this.replace("%s", "%1\$s") 
+            .replace("%d", "%1\$d")        
     }
 }
